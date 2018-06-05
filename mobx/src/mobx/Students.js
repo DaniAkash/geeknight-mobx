@@ -1,7 +1,7 @@
 import {
   observable,
   action,
-  computed
+  computed,
 } from 'mobx';
 
 class Students {
@@ -87,8 +87,24 @@ class Students {
   @action
   addStudent = student => {
     this._students.push(student);
-  }
+  };
 
+  @action
+  editStudent = student => {
+    this._students.every((currentStudent, index) => {
+      if(currentStudent.id === student.id) {
+        this._students[index] = student;
+        return false;
+      }
+      return true;
+    });
+  };
+
+  getStudentById = id => {
+    return this._students.find(student => {
+      return student.id === id;
+    });
+  };
 }
 
 export default Students;

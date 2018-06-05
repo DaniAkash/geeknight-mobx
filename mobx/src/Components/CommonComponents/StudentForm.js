@@ -10,6 +10,7 @@ class StudentForm extends Component {
   };
 
   state = {
+    id: 1 + Math.random(),
     first_name: '',
     last_name: '',
     gender: 'Male',
@@ -26,6 +27,12 @@ class StudentForm extends Component {
   submit = () => {
     this.props.onSubmit(this.state);
   };
+
+  componentWillMount() {
+    if(this.props.isEditing) {
+      this.setState(this.props.student);
+    }
+  }
 
   render() {
     return(
@@ -56,7 +63,7 @@ class StudentForm extends Component {
           <textarea className="form-control" rows={5} id="address" value={this.state.address} onChange={e => this.editForm('address', e.target.value)}  />
         </div>
         <div className="form-group">
-          <button className={'btn btn-large btn-primary'} onClick={this.submit}>Add Student</button>
+          <button className={'btn btn-large btn-primary'} onClick={this.submit}>{`${this.props.isEditing? 'Edit' :'Add'} Student`}</button>
         </div>
       </div>
     )

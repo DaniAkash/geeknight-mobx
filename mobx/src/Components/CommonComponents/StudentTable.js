@@ -15,6 +15,7 @@ const StudentTable = ({students}) => {
             <th>Gender</th>
             <th>Phone Number</th>
             <th>Address</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -27,6 +28,7 @@ const StudentTable = ({students}) => {
                 <td>{student.gender}</td>
                 <td>{student.phone_number}</td>
                 <td>{student.address}</td>
+                <td><NavLink to={`/edit/${student.id}`} className={'btn'}>Edit</NavLink></td>
               </tr>
             )
           })
