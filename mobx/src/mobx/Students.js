@@ -84,6 +84,11 @@ class Students {
     return this._students.slice();
   }
 
+  @action
+  addStudent = student => {
+    this._students.push(student);
+  }
+
 }
 
 export default Students;
