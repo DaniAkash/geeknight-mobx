@@ -5,7 +5,7 @@ import {
 } from 'mobx';
 
 class Students {
-  @observable students = [
+  @observable _students = [
     {
       "id": 1,
       "first_name": "Patric",
@@ -78,4 +78,12 @@ class Students {
       "address": "18936 Anthes Trail"
     }
     ];
+
+  @computed
+  get students() {
+    return this._students.slice();
+  }
+
 }
+
+export default Students;

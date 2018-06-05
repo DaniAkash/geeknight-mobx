@@ -4,11 +4,17 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter } from 'react-router-dom';
+import {
+  Provider
+} from 'mobx-react';
+import store from "./mobx/store";
 
 ReactDOM.render(
-  <BrowserRouter basename="/">
-    <App/>
-  </BrowserRouter>,
+  <Provider {...store}>
+    <BrowserRouter basename="/">
+      <App/>
+    </BrowserRouter>
+  </Provider>,
   document.getElementById('root')
 );
 registerServiceWorker();
